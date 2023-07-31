@@ -9,6 +9,7 @@ function Viste({
   calcolaWinner,
   winner,
   setta,
+  mostraPopup,
 }) {
   return (
     <div>
@@ -22,6 +23,7 @@ function Viste({
           calcolaWinner={calcolaWinner}
           winner={winner}
           setta={setta}
+          mostraPopup={mostraPopup}
         />
       )}
     </div>

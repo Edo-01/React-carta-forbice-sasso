@@ -9,6 +9,7 @@ function VistaSceltaFatta({
   calcolaWinner,
   winner,
   setta,
+  mostraPopup,
 }) {
   let sceltaMostrata = null;
   if (sceltaUser === 0) {

@@ -1,12 +1,14 @@
 import { useState } from "react";
 import Score from "./components/Score";
 import Viste from "./components/Viste";
+import Popup from "./components/Popup";
 
 function App() {
   const [sceltaUser, setSceltaUser] = useState(null); // 0-1-2
   const [sceltaAi, setSceltaAi] = useState(null); // 0-1-2
   const [score, setScore] = useState(0);
   const [winner, setWinner] = useState(null); // user , ai, pari
+  const [popupActive, setPopupActive] = useState(false);
 
   function sceltaUtente(par) {
     setSceltaUser(par);
@@ -70,6 +72,13 @@ function App() {
     setSceltaAi(null);
     setWinner(null);
   }
+  function mostraPopup() {
+    if (popupActive) {
+      setPopupActive(false);
+    } else {
+      setPopupActive(true);
+    }
+  }
   return (
     <div>
       <div className="containerScore">
@@ -84,11 +93,15 @@ function App() {
           calcolaWinner={calcolaWinner}
           winner={winner}
           setta={setta}
+          mostraPopup={mostraPopup}
         />
       </div>
       <div className="containerButton">
-        <button className="buttonRules">RULES</button>
+        <button onClick={mostraPopup} className="buttonRules">
+          RULES
+        </button>
       </div>
+      {popupActive ? <Popup mostraPopup={mostraPopup} /> : null}
     </div>
   );
 }
